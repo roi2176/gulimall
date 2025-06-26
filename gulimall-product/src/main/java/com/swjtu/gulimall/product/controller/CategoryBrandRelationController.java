@@ -1,11 +1,8 @@
 package com.swjtu.gulimall.product.controller;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
-import com.swjtu.gulimall.product.entity.CategoryEntity;
-import com.swjtu.gulimall.product.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +22,7 @@ import com.swjtu.common.utils.R;
  *
  * @author roi
  * @email sunlightcs@gmail.com
- * @date 2025-06-25 01:05:04
+ * @date 2025-06-26 14:11:05
  */
 @RestController
 @RequestMapping("product/categorybrandrelation")
@@ -33,16 +30,13 @@ public class CategoryBrandRelationController {
     @Autowired
     private CategoryBrandRelationService categoryBrandRelationService;
 
-    @Autowired
-    private CategoryService categoryService;
-
     /**
-     * 查出所有分类及其子分类，以树形结构组装
+     * 列表
      */
     @RequestMapping("/list")
     //@RequiresPermissions("product:categorybrandrelation:list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = categoryService.queryPage(params);
+        PageUtils page = categoryBrandRelationService.queryPage(params);
 
         return R.ok().put("page", page);
     }
